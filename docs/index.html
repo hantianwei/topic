@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>韩天伟</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <style>
+    body {
+      overflow: auto !important;
+    }
+
+    nav.app-nav {
+      position: absolute !important;
+      right: 100px !important;
+    }
+
+    .sidebar>h1 {
+      font-weight: 360;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <nav>
+    <a href="#/">EN</a>
+    <a href="#/zh-cn/">中文</a>
+  </nav> -->
+  <div id="app">加载中</div>
+  <script>
+    window.$docsify = {
+      name: '韩天伟-专题',
+      repo: '',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      loadNavbar: true,
+      auto2top: true,
+      //coverpage: true,
+      executeScript: true,
+      //mergeNavbar: true,
+      maxLevel: 4,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/.*/_navbar.md': '/_navbar.md'
+      },
+      plugins: [
+        function(hook) {
+          var footer = [
+            '<hr/>',
+            '<footer>',
+            '<span><a href="https://www.hantianwei.com/">Tianwei</a> </span>',
+            '<span></span>',
+            '</footer>'
+          ].join('');
+
+          hook.afterEach(function(html) {
+            return html + footer;
+          });
+          var currentFlag = 0;
+          hook.doneEach(function() {
+            document.querySelectorAll(".sidebar-nav > ul > li").forEach(
+              function(node, index, nodelist) {
+                var nodeChildrens = node.children;
+                if (currentFlag < nodelist.length) {
+                  currentFlag++;
+                  for (i = 0; i < nodeChildrens.length; i++) {
+                    if (nodeChildrens[i].nodeName === "UL") {
+                      nodeChildrens[i].style.display = "none";
+                    }
+                  }
+                }
+                node.onclick = function(event) {
+                  for (i = 0; i < nodeChildrens.length; i++) {
+                    if (nodeChildrens[i].nodeName === "UL" && nodeChildrens[0] === event.target) {
+                      if (nodeChildrens[i].style.display === "none") {
+                        nodeChildrens[i].style.display = "block";
+                      } else {
+                        nodeChildrens[i].style.display = "none";
+                      }
+                    }
+                  }
+                };
+
+              });
+          });
+        }
+      ]
+    }
+  </script>
+  <script src="//unpkg.com/docsify"></script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-bash.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-java.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-sql.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-javascript.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-css.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code"></script>
+
+
+
+</body>
+
+</html>
